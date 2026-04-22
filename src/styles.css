@@ -1,0 +1,557 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #edf4ff;
+  background:
+    radial-gradient(circle at top, rgba(80, 126, 255, 0.28), transparent 28%),
+    radial-gradient(circle at 20% 20%, rgba(92, 229, 255, 0.12), transparent 20%),
+    linear-gradient(180deg, #07111f 0%, #08172e 45%, #07111f 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: center;
+  min-height: 76vh;
+}
+
+.hero-copy h1 {
+  margin: 12px 0 16px;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 1.04;
+}
+
+.hero-copy p {
+  margin: 0;
+  max-width: 720px;
+  color: #c9daf8;
+  font-size: 1.08rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid rgba(156, 198, 255, 0.25);
+  border-radius: 999px;
+  color: #9fd3ff;
+  background: rgba(14, 30, 58, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.primary-link,
+.secondary-link,
+.primary,
+.launch-actions button,
+.quiz-options button,
+.chat-input-row button {
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+}
+
+.primary-link,
+.primary,
+.launch-actions .primary,
+.chat-input-row .primary {
+  background: linear-gradient(135deg, #65d8ff, #5b7cff);
+  color: #04111f;
+  font-weight: 700;
+}
+
+.secondary-link {
+  border: 1px solid rgba(159, 211, 255, 0.3);
+  color: #dbe9ff;
+  background: rgba(10, 19, 36, 0.55);
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 480px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, rgba(11, 29, 57, 0.9), rgba(9, 19, 38, 0.85));
+  border: 1px solid rgba(133, 173, 255, 0.18);
+  overflow: hidden;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+}
+
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.95) 0 1px, transparent 1.2px),
+    radial-gradient(circle, rgba(255,255,255,0.5) 0 1px, transparent 1.2px);
+  background-size: 90px 90px, 130px 130px;
+  background-position: 10px 10px, 40px 30px;
+  opacity: 0.45;
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(0.2px);
+}
+
+.planet-1 {
+  width: 180px;
+  height: 180px;
+  top: 54px;
+  right: 40px;
+  background: radial-gradient(circle at 30% 30%, #ffe59f, #ff9f43 60%, #8b4d00);
+  box-shadow: 0 0 70px rgba(255, 174, 0, 0.35);
+}
+
+.planet-2 {
+  width: 82px;
+  height: 82px;
+  bottom: 96px;
+  left: 60px;
+  background: radial-gradient(circle at 35% 30%, #b8efff, #4891ff 65%, #12305f);
+  box-shadow: 0 0 40px rgba(72, 145, 255, 0.35);
+}
+
+.rocket {
+  position: absolute;
+  left: 42%;
+  top: 38%;
+  font-size: 5rem;
+  transform: rotate(18deg);
+  animation: floatRocket 3s ease-in-out infinite;
+}
+
+@keyframes floatRocket {
+  0%, 100% { transform: translateY(0) rotate(18deg); }
+  50% { transform: translateY(-14px) rotate(14deg); }
+}
+
+.orbit-card {
+  position: absolute;
+  left: 28px;
+  bottom: 26px;
+  padding: 18px;
+  border-radius: 22px;
+  width: 220px;
+  background: rgba(6, 20, 41, 0.85);
+  border: 1px solid rgba(123, 175, 255, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+.orbit-card strong {
+  display: block;
+  margin: 6px 0;
+  font-size: 1.3rem;
+}
+
+.stats-grid,
+.knowledge-grid,
+.roadmap-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 8px;
+}
+
+.stat-card,
+.knowledge-card,
+.quiz-card,
+.ai-console,
+.mission-card,
+.roadmap-card {
+  border: 1px solid rgba(140, 180, 255, 0.16);
+  background: rgba(8, 19, 39, 0.78);
+  border-radius: 24px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.18);
+}
+
+.stat-card {
+  padding: 24px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.stat-label {
+  margin-top: 8px;
+  color: #dce7ff;
+  font-weight: 700;
+}
+
+.stat-subtext {
+  margin-top: 6px;
+  color: #98afd1;
+}
+
+.section-block {
+  margin-top: 54px;
+}
+
+.section-title {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 24px;
+}
+
+.section-title.left {
+  text-align: left;
+  margin: 0 0 18px;
+}
+
+.section-title h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.section-title p {
+  margin: 0;
+  color: #abc0e4;
+}
+
+.knowledge-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.knowledge-card {
+  padding: 22px;
+}
+
+.knowledge-emoji {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.knowledge-card h3 {
+  margin: 0 0 10px;
+}
+
+.knowledge-card p {
+  margin: 0 0 12px;
+  color: #dbe7ff;
+}
+
+.knowledge-card span {
+  color: #8edaff;
+  font-size: 0.95rem;
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.quiz-card,
+.ai-console {
+  padding: 22px;
+  min-height: 100%;
+}
+
+.quiz-progress {
+  color: #8fd7ff;
+  margin-bottom: 10px;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.quiz-options button {
+  text-align: left;
+  background: rgba(16, 33, 62, 0.95);
+  color: #e8f1ff;
+  border: 1px solid rgba(132, 176, 255, 0.18);
+}
+
+.quiz-options button.selected {
+  background: rgba(89, 125, 255, 0.25);
+  border-color: rgba(134, 194, 255, 0.58);
+}
+
+.quiz-feedback {
+  margin-top: 14px;
+  color: #9fe3ff;
+}
+
+.ai-console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ai-console-header h3 {
+  margin: 0;
+}
+
+.ai-console-header span {
+  color: #8bd9ff;
+  font-size: 0.9rem;
+}
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 340px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.chat-item {
+  padding: 14px;
+  border-radius: 18px;
+}
+
+.chat-item.ai {
+  background: rgba(17, 38, 72, 0.95);
+}
+
+.chat-item.user {
+  background: rgba(52, 72, 129, 0.95);
+}
+
+.chat-item span {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.86rem;
+  color: #97e0ff;
+}
+
+.chat-item p {
+  margin: 0;
+}
+
+.chat-input-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.chat-input-row input {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(127, 174, 255, 0.2);
+  background: rgba(8, 18, 34, 0.95);
+  color: #eef5ff;
+}
+
+.mission-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.mission-card {
+  padding: 22px;
+}
+
+.mission-card.locked {
+  opacity: 0.7;
+}
+
+.mission-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.mission-header h3 {
+  margin: 0 0 8px;
+}
+
+.mission-header p,
+.mission-body p,
+.mini-placeholder p {
+  margin: 0;
+  color: #c6d7f7;
+}
+
+.mission-body {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.badge {
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.badge.done {
+  background: rgba(72, 207, 145, 0.18);
+  color: #9dffca;
+}
+
+.badge.open {
+  background: rgba(93, 134, 255, 0.18);
+  color: #b7cbff;
+}
+
+.badge.locked {
+  background: rgba(150, 163, 190, 0.12);
+  color: #b7bfd0;
+}
+
+.launch-box,
+.mini-placeholder {
+  margin-top: 8px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(7, 16, 31, 0.85);
+  border: 1px solid rgba(124, 171, 255, 0.14);
+}
+
+.countdown-display {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #8ee4ff;
+}
+
+.launch-actions {
+  display: flex;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.launch-actions button {
+  background: rgba(22, 43, 82, 0.95);
+  color: #edf4ff;
+}
+
+.mission-message {
+  color: #92e2ff;
+}
+
+.roadmap-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.roadmap-card {
+  padding: 22px;
+}
+
+.roadmap-card h3 {
+  margin-top: 0;
+}
+
+.roadmap-card p {
+  margin-bottom: 0;
+  color: #c6d9fb;
+}
+
+@media (max-width: 1100px) {
+  .hero-section,
+  .split-layout,
+  .knowledge-grid,
+  .roadmap-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 22px 14px 54px;
+  }
+
+  .hero-section,
+  .split-layout,
+  .knowledge-grid,
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: 360px;
+  }
+
+  .rocket {
+    left: 34%;
+    top: 40%;
+    font-size: 4rem;
+  }
+
+  .hero-actions,
+  .launch-actions,
+  .chat-input-row {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .mission-header,
+  .ai-console-header {
+    flex-direction: column;
+    align-items: start;
+  }
+}
